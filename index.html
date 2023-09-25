@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <title>Tools pour AKT.io</title>
+    <link rel="icon" href="img/aktblanc.svg" sizes="150%">
+    </link>
+    <div class="logo">
+        <img class="logos" src="/IMG/aktblanc.svg">
+    </div>
+</head>
+
+<body>
+    <div class="onglets">
+        <button class="onglet" onclick="afficherOutil('outil1')">Calculateur PRU</button>
+        <button class="onglet" onclick="afficherOutil('outil2')">Intérêts Vault Mining</button>
+        <button class="onglet" onclick="afficherOutil('outil3')">Intérêts Flex Vault</button>
+    </div>
+
+    <div id="outil1" class="outil">
+        <div class="container">
+            <h1>Prix de revient (PRU)</h1>
+            <div class="calculator-box">
+                <div class="input-group">
+                    <label for="quantite">Quantité AKTIO:</label>
+                    <input type="text" id="quantite" name="quantite" placeholder="Quantité AKTIO">
+                </div>
+
+                <div class="input-group">
+                    <label for="coutTotal">Coût Total :</label>
+                    <input type="text" id="coutTotal" name="coutTotal" placeholder="Coût Total">
+                </div>
+
+                <div class="input-group">
+                    <label for="aktioStake">Aktio Stake :</label>
+                    <input type="text" id="aktioStake" name="aktioStake" placeholder="Aktio Stake">
+                </div>
+
+                <div class="input-group">
+                    <label for="pourcentage">Pourcentage :</label>
+                    <select id="pourcentage" name="pourcentage">
+                        <option value="15">15%</option>
+                        <option value="20">20%</option>
+                    </select>
+                </div>
+
+                <button id="calculerPRU">Calculer PRU</button>
+            </div>
+            <div id="resultatAktioStake" hidden></div>
+            <div id="resultatPourcentage" hidden></div>
+            <div id="resultatPRU"></div>
+        </div>
+        <!-- outil 1 -->
+    </div>
+
+    <div id="outil2" class="outil" style="display: none;">
+        <div class="container">
+            <h1>Intérêts Vault Mining</h1>
+            <p>Les intérêts ne sont pas composés</p>
+            <div class="input-group">
+                <label for="montantInitial">Montant Initial :</label>
+                <input type="text" id="montantInitial" placeholder="Montant Initial"><br>
+            </div>
+            <div class="input-group">
+                <label for="tauxInteret">Taux d'Intérêt (%) :</label>
+                <input type="text" id="tauxInteret" placeholder="Taux d'intérêt annuel"><br>
+            </div>
+            <div class="input-group">
+                <label for="dureePlacement">Durée (années) :</label>
+                <input type="text" id="dureePlacement" placeholder="Durée du placement" value="2"><br>
+            </div>
+            <button onclick="calculerInterets()">Calculer</button>
+
+            <div id="container2" class="container2" hidden>
+                <h2>Résultats</h2>
+                <div class="container3">
+                    <p>Intérêts gagnés : <span id="totalGains"></span></p>
+                </div>
+
+                <div class="container3">
+                    <p>Gains Mensuels : <span id="gainsMensuels"></span></p>
+                </div>
+                <div class="container3">
+                    <p>Gains Journaliers : <span id="gainsJournaliers"></span></p>
+                </div>
+            </div>
+        </div>
+        <!-- outil 2 -->
+    </div>
+
+
+    <div id="outil3" class="outil" style="display: none;">
+        <div class="container">
+            <h1>Intérêts Flex Vault</h1>
+            <p>Les intérêts sont composés quotidiennement</p>
+
+            <div class="input-group">
+                <label for="montantInitialFlex">Montant Initial :</label>
+                <input type="text" id="montantInitialFlex" placeholder="Montant initial" step="any"><br>
+            </div>
+            <div class="input-group">
+                <label for="tauxInteretFlex">Taux d'Intérêt (%) :</label>
+                <input type="text" id="tauxInteretFlex" placeholder="Taux d'Intérêt (%) " step="any"><br>
+            </div>
+            <div class="input-group">
+                <label for="dureePlacementFlex">Durée (années) :</label>
+                <input type="text" id="dureePlacementFlex" placeholder="Durée du placement"><br>
+            </div>
+            <button onclick="calculerInteretsFlex()">Calculer</button>
+
+            <div id="container3" class="container2" hidden>
+                <table>
+                    <tr>
+                        <th>Année</th>
+                        <th>Gains Mensuels</th>
+                        <th>Gains Annuels</th>
+                        <th>Montant Total</th>
+                    </tr>
+                    <tbody id="resultatsTableauFlex">
+                        <!-- Les résultats seront ajoutés ici -->
+                    </tbody>
+                </table>
+
+                <!-- outil 3 -->
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+<div class="reseau">
+    <button class="reseaux" onclick="window.open('https://www.akt.io/fr', '_blank')">Site
+        AKT.io</button>
+    <button class="reseaux" onclick="window.open('https://t.me/aktio_official/81639', '_blank')">Telegram</button>
+    <button class="reseaux" onclick="window.open('https://twitter.com/aktioapp', '_blank')">Twitter</button>
+</div>
+
+</html>
